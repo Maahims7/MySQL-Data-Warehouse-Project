@@ -122,6 +122,10 @@ Through this project, I gained practical experience in:
 
 ---
 
+Acknowledgment
+
+This project was completed as part of my Data Engineering learning journey. The architecture, concepts, and best practices were learned from the SQL Data Warehouse Project course by Baraa Khatib Salkini (Data With Baraa). I implemented the project using MySQL and DBeaver to gain hands-on experience in data warehousing, ETL processes, data modeling, and analytics.
+
 ## 🤝 Connect With Me
 
 LinkedIn: [www.linkedin.com/in/mahendra777](http://www.linkedin.com/in/mahendra777)
