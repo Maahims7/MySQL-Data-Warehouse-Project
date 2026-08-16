@@ -1,52 +1,26 @@
 /*
-===============================================================================
-Create Database and Schemas
-===============================================================================
-
+=============================================================
+Create Databases (MySQL version)
+=============================================================
 Script Purpose:
-    This script creates a new database named 'data_warehouse' after checking
-    whether it already exists.
-
-    If the database exists, it is dropped and recreated. Additionally, the
-    script creates the Bronze, Silver, and Gold schemas used in the
-    Medallion Data Architecture.
-
-    Bronze Layer:
-        Stores raw data ingested from source systems.
-
-    Silver Layer:
-        Stores cleaned, validated, and transformed data.
-
-    Gold Layer:
-        Stores business-ready data optimized for reporting,
-        analytics, and dashboarding.
+    MySQL does not support multiple schemas inside one database the way
+    SQL Server does, so this project uses three separate MySQL databases
+    instead of three schemas: 'bronze', 'silver', 'gold'.
+    Cross-database queries (e.g. gold reading from silver) work fine in
+    MySQL as long as they live on the same server, so the rest of the
+    project (naming, joins, views) stays the same.
 
 WARNING:
-    Running this script will drop the entire 'data_warehouse' database
-    if it already exists.
-
-    All data, tables, views, procedures, and other database objects
-    will be permanently deleted.
-
-    Proceed with caution and ensure proper backups are available
-    before executing this script.
-
-===============================================================================
+    Running this script will DROP the 'bronze', 'silver', and 'gold'
+    databases if they exist. All data in them will be permanently
+    deleted. Make sure you have backups if needed before running this.
+=============================================================
 */
 
--- Drop and recreate the 'data_warehouse' database
-DROP DATABASE IF EXISTS data_warehouse;
+DROP DATABASE IF EXISTS bronze;
+DROP DATABASE IF EXISTS silver;
+DROP DATABASE IF EXISTS gold;
 
--- Create the 'data_warehouse' database
-CREATE DATABASE data_warehouse;
-
--- Switch to the database
-USE data_warehouse;
-
--- Create Schemas
-CREATE SCHEMA bronze;
-CREATE SCHEMA silver;
-CREATE SCHEMA gold;
-
--- Verify Creation
-SHOW DATABASES;
+CREATE DATABASE bronze;
+CREATE DATABASE silver;
+CREATE DATABASE gold;
